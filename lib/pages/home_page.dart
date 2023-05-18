@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         backgroundColor: Colors.grey[900],
         centerTitle: true,
-        title: const Text('TASK SCHEDULE'),
+        title: const Text("Chat's"),
         actions: [
           IconButton(
             onPressed: signOut,
@@ -50,7 +50,6 @@ class _HomePageState extends State<HomePage> {
       body: Center(
         child: Column(
           children: [
-            const SizedBox(height: 10,),
             Expanded(
               child: StreamBuilder(
                 stream: FirebaseFirestore.instance
@@ -64,12 +63,9 @@ class _HomePageState extends State<HomePage> {
                       itemCount: snapshot.data!.docs.length,
                       itemBuilder: (context, index) {
                         final post = snapshot.data!.docs[index];
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                          child: WallPost(
-                            message: post['Message'],
-                            user: post['UserEmail'],
-                          ),
+                        return WallPost(
+                          message: post['Message'],
+                          user: post['UserEmail'],
                         );
                       },
                     );
@@ -85,7 +81,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(25),
+              padding: const EdgeInsets.all(10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
